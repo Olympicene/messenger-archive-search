@@ -1,0 +1,14 @@
+{
+  "name": "messenger-archive-searcher",
+  "version": "1.0.0",
+  "description": "Command-line package that searches through Facebook's messenger archive json files to find relevant data.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "bin": {
+    "say-hello": "./index.js"
+  }
+}
