@@ -3,12 +3,22 @@
   "version": "1.0.0",
   "description": "Command-line package that searches through Facebook's messenger archive json files to find relevant data.",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "bin": {
-    "say-hello": "./index.js"
+    "messenger-archive": "./index.js"
+  },
+  "dependencies": {
+    "chalk": "^5.0.0",
+    "commander": "^8.3.0",
+    "conf": "^10.1.0",
+    "iconv": "^3.0.1",
+    "iconv-lite": "^0.6.3",
+    "natural-orderby": "^2.0.3",
+    "utf8": "^3.0.0"
   }
 }
