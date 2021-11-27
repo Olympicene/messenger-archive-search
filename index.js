@@ -3,12 +3,20 @@
 //CLI tool help
 import program from 'commander';
 import {collate} from './commands/collate.js';
+import {fixEncoding} from './commands/fixEncoding.js'
+import chalk from 'chalk';
+
 
 program
     .command('collate')
     .description('Collate all message files into a single json.')
     .option('-o, --output <file>', 'Name of file to be outputed. If not specified, will default to \'collate.json\'')
-    .action(collate)
+    .action(collate);
+
+program
+    .command('fix-encoding')
+    .description(`Fixes Mojibake issue of messenger archive files. ${chalk.red('ONLY RUN ONCE.')} By default will go through every valid file.`)
+    .action(fixEncoding);
 
 // program
 //   .command('list')

@@ -11,10 +11,6 @@ import iconv from 'iconv-lite';
 const conf = new config();
 
 export function collate(file) {
-  //let buf = iconv.encode('â\x9D¤', 'latin1');
-  //let str = iconv.decode(buf, 'utf8');
-  //console.log(str)
-
   ///////////////////////////////////////////////////////////////////////////File Prep
   //final collate file
   let collateFile = {
@@ -24,7 +20,7 @@ export function collate(file) {
 
   //get all messenger archive files
   let allFiles = listOfFiles();
-  console.log(`Loaded ${allFiles.length} files.`);
+  console.log(`Found ${allFiles.length} messenger archive files.`);
 
   ///////////////////////////////////////////////////////////////////////////Get Participants + Messages
   //iterate through all files and get all participants + Messages
@@ -38,7 +34,6 @@ export function collate(file) {
       }
     }
 
-    //concat message (order by date was already set by facebook)
     collateFile.messages = collateFile.messages.concat(file.getMessages());
 
     console.log(`Successfully read ${fileName}`);
@@ -64,6 +59,6 @@ export function collate(file) {
 
   fs.writeFileSync(fileName, JSON.stringify(collateFile, null, '\t'));
   console.log(
-    `Successfully collated all messenger json files into ${fileName}`
+    `Successfully collated all messenger archive files into ${fileName}`
   );
 }
