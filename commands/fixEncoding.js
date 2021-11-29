@@ -10,10 +10,10 @@ import iconv from 'iconv-lite';
 
 const conf = new config();
 
-export function fixEncoding() {
+export function fixEncoding(file) {
   ///////////////////////////////////////////////////////////////////////////File Prep
-  //get all messenger archive files
-  let allFiles = listOfFiles();
+  //get all files from input if they exist, otherwise get all archive files
+  let allFiles = 'input' in file ? file.input : listOfFiles();
   console.log(`Found ${allFiles.length} messenger archive files.`);
 
   ///////////////////////////////////////////////////////////////////////////Iterate Through files

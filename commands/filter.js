@@ -17,8 +17,8 @@ export function filter(option) {
     messages: [],
   };
 
-  //get all messenger archive files
-  let allFiles = listOfFiles();
+  //get all files from input if they exist, otherwise get all archive files
+  let allFiles = 'input' in option ? option.input : listOfFiles();
   console.log(`Found ${allFiles.length} messenger archive files.`);
 
   ///////////////////////////////////////////////////////////////////////////Get Participants + Messages
@@ -37,7 +37,7 @@ export function filter(option) {
       //check if sender filter is present and if message is has exact reacts
       if (option.reacts && !('reactions' in message && Object.keys(message.reactions).length == option.reacts)) {
         continue;
-      }      
+      }
       
       //check if isUnsent filter is present and if message is unsent
       if ('isUnsent' in option && !(message.is_unsent == option.isUnsent)) {
@@ -58,7 +58,7 @@ export function filter(option) {
 
   ///////////////////////////////////////////////////////////////////////////Writing File
 
-  let fileName = option.output ? option.output : 'filter.json';
+  let fileName = option.output;
 
   //delete if duplicates
   if(fs.existsSync(fileName)) {

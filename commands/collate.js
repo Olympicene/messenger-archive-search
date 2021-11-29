@@ -18,8 +18,8 @@ export function collate(file) {
     messages: [],
   };
 
-  //get all messenger archive files
-  let allFiles = listOfFiles();
+  //get all files from input if they exist, otherwise get all archive files
+  let allFiles = 'input' in file ? file.input : listOfFiles();
   console.log(`Found ${allFiles.length} messenger archive files.`);
 
   ///////////////////////////////////////////////////////////////////////////Get Participants + Messages
@@ -49,7 +49,7 @@ export function collate(file) {
 
   ///////////////////////////////////////////////////////////////////////////Writing File
 
-  let fileName = file.output ? file.output : 'collate.json';
+  let fileName = file.output;
 
   //delete if duplicates
   if(fs.existsSync(fileName)) {
