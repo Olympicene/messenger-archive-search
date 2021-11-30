@@ -40,7 +40,7 @@ export function filter(option) {
       }
       
       //check if isUnsent filter is present and if message is unsent
-      if ('isUnsent' in option && !(message.is_unsent == option.isUnsent)) {
+      if ('isUnsent' in option && !(message.is_unsent === JSON.parse(option.isUnsent.toLowerCase()))) {
         continue;
       }
 
@@ -54,6 +54,14 @@ export function filter(option) {
     }
 
     console.log(`Successfully read ${fileName}`);
+  }
+
+  ///////////////////////////////////////////////////////////////////////////Formatting
+  //set back to original formatting where name was within object
+  for (let index in filterFile.participants) {
+    filterFile.participants[index] = {
+      name: filterFile.participants[index],
+    };
   }
 
   ///////////////////////////////////////////////////////////////////////////Writing File

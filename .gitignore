@@ -1,0 +1,7 @@
+.vscode
+node_modules
+message_?.json
+message_??.json
+message_???.json
+collate.json
+filter.json

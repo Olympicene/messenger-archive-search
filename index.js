@@ -5,6 +5,8 @@ import program from 'commander';
 import {collate} from './commands/collate.js';
 import {fixEncoding} from './commands/fixEncoding.js'
 import { filter } from './commands/filter.js';
+import { sort } from './commands/sort.js';
+
 import chalk from 'chalk';
 
 
@@ -30,6 +32,13 @@ program
     .option('-i, --input <file...>', 'Specify which files you want to collate. If not specified, will default to all files named message_{value}.json')
     .option('-o, --output <file>', 'Name of file to be outputed. If not specified, will default to \'collate.json\'', 'collate.json')
     .action(collate);
+
+program
+    .command('sort')
+    .description('Sort message files by certain properties')
+    .option('-i, --input <file...>', 'Specify which files you want to sort. If not specified, will default to all files named message_{value}.json')
+    .option('-d, --date', 'Sort file(s) by date', false)
+    .action(sort);
 
 // program
 //   .command('list')
