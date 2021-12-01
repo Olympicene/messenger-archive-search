@@ -29,7 +29,14 @@ export function sort(file) {
       messages: [],
     };
 
-    sortFile.messages = file.getMessages().sort((a, b) => (a.timestamp_ms < b.timestamp_ms) ? 1 : -1);
+    if(file.date)
+    {
+      sortFile.messages = file.getMessages().sort((a, b) => (a.timestamp_ms < b.timestamp_ms) ? 1 : -1);
+    }
+    else {
+      sortFile.messages = file.getMessages();
+
+    }
 
     ///////////////////////////////////////////////////////////////////////////Writing File
     //delete if duplicates
