@@ -24,6 +24,7 @@ program
     .option('-s, --sender <name>', 'Filter messages by sender name.')
     .option('-r, --reacts <value>', 'Filter messages by the number of reactions message received.')
     .option('-iu, --is-unsent <bool>', 'Filter messages by if they were unsent.')
+    .option('-p, --has-property <property>', 'Filter messages if they have certain message property.')
     .action(filter);
 
 program

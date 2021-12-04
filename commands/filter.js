@@ -38,9 +38,13 @@ export function filter(option) {
       if (option.reacts && !('reactions' in message && Object.keys(message.reactions).length == option.reacts)) {
         continue;
       }
-      
+
       //check if isUnsent filter is present and if message is unsent
       if ('isUnsent' in option && !(message.is_unsent === JSON.parse(option.isUnsent.toLowerCase()))) {
+        continue;
+      }
+
+      if ('hasProperty' in option && !(option.hasProperty in message)) {
         continue;
       }
 

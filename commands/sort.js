@@ -35,7 +35,6 @@ export function sort(file) {
     }
     else {
       sortFile.messages = file.getMessages();
-
     }
 
     ///////////////////////////////////////////////////////////////////////////Writing File
